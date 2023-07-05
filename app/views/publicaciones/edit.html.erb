@@ -1,0 +1,13 @@
+<%= form_for(@publicacion, url: update_publicacion_path) do |f| %>
+
+  <%= f.label :titulo %>
+  <%= f.text_field :titulo %>
+
+  <%= f.label :descripcion %>
+  <%= f.text_field :descripcion %>
+
+  <%= f.submit 'Guardar' %>
+  <%= link_to "Todas las publicaciones", all_publicacion_path, class: "btn btn-primary" %>
+
+<% end %>
+

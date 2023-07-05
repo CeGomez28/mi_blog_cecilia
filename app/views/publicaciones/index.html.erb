@@ -1,0 +1,40 @@
+<head>
+  <link rel="stylesheet" href="/assets/estilos_app.css">
+</head>
+
+<div>
+
+<h1 style="width: 50%; margin: 50px auto;">Facebook vol. 2</h1>
+<br/>
+<div>
+  <% @publicaciones.each do |publicacion| %>
+  <hr>
+      <h2><%= publicacion.titulo %></h2>
+      <p><%= publicacion.descripcion %></p>
+      <%= link_to "Editar publicación", edit_publicacione_path(publicacion), class: "btn btn-primary" %>
+      <%= button_to "Eliminar", publicacione_path(publicacion), method: :delete %>
+<hr>
+      <%= form_with model: [publicacion, Comentario.new], url: publicacione_comentarios_path(publicacion.id) do |form| %>
+        <div class="field">
+          <%= form.label :comentario %>
+          <br/>
+          <%= form.text_area :contenido %>
+        </div>
+        <br/>
+        <div class="actions">
+          <%= form.submit 'Agregar comentario' %>
+        </div>
+
+        <% publicacion.comentarios.each do |comentario| %>
+    <div>
+      <p><%= comentario.contenido %></p>
+    </div>
+    <% end %>
+  <% end %>
+<% end %>
+</div>
+<hr>
+<br/>
+<%= link_to "Nueva publicación", new_publicacion_path, class: "btn btn-primary" %>
+
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+
+<h1><%= @publicacion.titulo %></h1>
+<p><%= @publicacion.descripcion %></p>
+<p>Creada el <%= @publicacion.created_at.strftime("%d/%m/%Y") %></p>
+
+<hr>
+<%= link_to "Editar publicación", edit_publicacione_path(@publicacion), class: "btn btn-primary" %>
+<%= button_to "Eliminar", publicacione_path, method: :delete %>
+
+<h2>Comentarios</h2>
+<div>
+  <% @publicacion.comentarios.each do |comentario| %>
+    <p><%= comentario.contenido %></p>
+    <%= link_to "Editar comentario", edit_publicacione_comentario_path(@publicacion, comentario), class: "btn btn-primary", method: :patch %>
+    <%= button_to "Eliminar", publicacione_comentario_path(@publicacion, comentario), method: :delete %>
+  <% end %>
+</div>
+
+<%= form_with(model: [@publicacion, Comentario.new], url: publicacion_comentarios_path(@publicacion)) do |form| %>
+
+    <%= form.label :contenido %>
+    <%= form.text_area :contenido %>
+  <%= form.submit 'Agregar comentario' %>
+<% end %>
+
+</div>
+<%= link_to "Todas las publicaciones", all_publicacion_path, class: "btn btn-primary" %>

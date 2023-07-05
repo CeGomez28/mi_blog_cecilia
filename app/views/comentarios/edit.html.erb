@@ -1,0 +1,9 @@
+<%= form_for(@comentario, url: update_comentario_path(@comentario)) do |f| %>
+
+  <%= f.label :contenido %>
+  <%= f.text_field :contenido %>
+
+  <%= f.submit 'Guardar' %>
+  <%= link_to "Todas las publicaciones", all_publicacion_path, class: "btn btn-primary" %>
+
+<% end %>

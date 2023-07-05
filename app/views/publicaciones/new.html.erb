@@ -1,0 +1,25 @@
+<%= form_with model: @publicacion, url: publicaciones_path do |form| %>
+
+<h1> Nuevo post: </h1>
+<br/>
+<div class="field">
+  <%= form.label :titulo %>
+  <%= form.text_field :titulo %>
+</div>
+
+<br/>
+
+<div class="field">
+  <%= form.label :descripcion %>
+  <%= form.text_field :descripcion %>
+</div>
+
+<br/>
+
+<div class="actions">
+  <%= form.submit "Publicar" %>
+</div>
+<% end %>
+<br/>
+
+<%= link_to "Todas las publicaciones", all_publicacion_path, class: "btn btn-primary" %>
